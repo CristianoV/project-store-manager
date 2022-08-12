@@ -13,6 +13,13 @@ const userModel = {
     `, [id]);
     return result;
   },
+  create: async (name) => {
+    const [result] = await db.query(`
+      INSERT INTO StoreManager.products (name)
+      VALUES (?)
+    `, [name]);
+    return result;
+  },
 };
 
 module.exports = userModel;
