@@ -13,6 +13,15 @@ const productsService = {
     }
     return { code: 200, data };
   },
+  createProduct: async (name) => {
+    if (!name) {
+      const message = { message: 'Name is required' };
+      return { code: 400, data: message };
+    }
+    const { insertId } = await productsModel.create(name);
+    const data = { id: insertId, name };
+    return { code: 201, data };
+  },
 };
 
 module.exports = productsService;
