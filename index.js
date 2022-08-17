@@ -11,6 +11,8 @@ app.get('/products', rota.getProducts);
 app.get('/products/:id', rota.getProductsById);
 app.post('/products', rota.createProducts);
 app.post('/sales', rotaSale.saleProductsCreate);
+app.get('/sales', rotaSale.saleAllProducts);
+app.get('/sales/:id', rotaSale.saleSpecificId);
 
 app.use((err, _req, res, _next) => {
   const { message, statusCode } = err;
