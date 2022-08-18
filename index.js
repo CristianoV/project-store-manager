@@ -9,6 +9,7 @@ const rotaSale = require('./controllers/productsSaleControllers');
 
 app.get('/products', rota.getProducts);
 app.get('/products/:id', rota.getProductsById);
+app.put('/products/:id', rota.updateProduct);
 app.post('/products', rota.createProducts);
 app.post('/sales', rotaSale.saleProductsCreate);
 app.get('/sales', rotaSale.saleAllProducts);
