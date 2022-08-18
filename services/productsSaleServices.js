@@ -1,8 +1,8 @@
 const productSalesModel = require('../models/ProductsSaleModels');
 const productsModel = require('../models/ProductsModels');
-const NotFoundError = require('../errors/NotFoundError');
-const { schemaSale } = require('./schemas');
 const { validator } = require('./validator');
+const { schemaSale } = require('./schemas');
+const NotFoundError = require('../errors/NotFoundError');
 
 const productsService = {
   productSaleError: async (products) => {
