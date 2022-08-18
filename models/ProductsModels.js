@@ -20,6 +20,14 @@ const userModel = {
     `, [name]);
     return result;
   },
+  updateProduct: async ({ id, name }) => {
+    const [result] = await db.query(`
+    UPDATE StoreManager.products
+    SET name = (?)
+    WHERE id = ${id}
+    `, [name]);
+    return result;
+  },
 };
 
 module.exports = userModel;
