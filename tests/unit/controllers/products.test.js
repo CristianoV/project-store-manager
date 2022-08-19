@@ -22,6 +22,13 @@ describe("Teste Controllers Products", () => {
     },
   ];
 
+  const fakeProduct = [
+    {
+      id: 1,
+      name: "Martelo de Thor",
+    },
+  ];
+
   describe("exibição de produtos", () => {
     it("Total: recebe todos os produtos", async () => {
       sinon
@@ -40,6 +47,25 @@ describe("Teste Controllers Products", () => {
       expect(res.status.calledWith(200)).to.be.true;
       expect(res.json.calledWith(fakeProducts)).to.be.true;
       expect(res.json.args[0][0]).to.be.equal(fakeProducts);
+    });
+    it("expecifico: recebe um produto", async () => {
+      sinon
+        .stub(productsService, "getProductsById")
+        .resolves({ data: fakeProduct, code: 200, message: null });
+
+      const req = {};
+      const res = {};
+
+      req.params = { id: 1 };
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns(res);
+      res.end = sinon.stub().returns();
+
+      await productsController.getProductsById(req, res);
+
+      expect(res.status.calledWith(200)).to.be.true;
+      expect(res.json.calledWith(fakeProduct)).to.be.true;
+      expect(res.json.args[0][0]).to.be.equal(fakeProduct);
     });
   });
 });

@@ -32,10 +32,12 @@ const productsService = {
     }
     const { insertId } = await productsModel.create(name);
     const data = { id: insertId, name };
+    console.log(name);
     return { code: 201, data };
   },
   updateProduct: async (update) => {
     const { id } = update;
+    // console.log(update);
     const data = await productsModel.getById(id);
     if (!data) {
       return { code: 404, data: { message: 'Product not found' } };
